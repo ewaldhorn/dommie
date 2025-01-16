@@ -8,6 +8,7 @@ import (
 )
 
 // ----------------------------------------------------------------------------
+var isReady bool
 var booCounter int
 var applicationElement js.Value
 
@@ -19,14 +20,19 @@ func bootstrap()
 // ----------------------------------------------------------------------------
 func main() {
 	setCallbacks()
-	dom.Hide("loading")
-	dom.Show("controls")
-	dom.Show("information")
+	toggleElements()
 	bootstrap()
 
 	// prevent the app for closing - it stays running for the life of the webpage
 	ch := make(chan struct{})
 	<-ch
+}
+
+// ----------------------------------------------------------------------------
+func toggleElements() {
+	dom.Hide("loading")
+	dom.Show("controls")
+	dom.Show("information")
 }
 
 // ----------------------------------------------------------------------------
@@ -40,7 +46,13 @@ func setCallbacks() {
 func setApplicationContainerCallback() {
 	js.Global().Set("setApplicationContainer", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 		applicationElement = dom.GetElementById(args[0].String())
-		// TODO: handle case where element is not found
+
+		if applicationElement.IsNull() {
+			dom.ShowAlert("Unable to find container element.")
+		} else {
+			isReady = true
+		}
+
 		return nil
 	}))
 }
@@ -48,8 +60,10 @@ func setApplicationContainerCallback() {
 // ----------------------------------------------------------------------------
 func setDoSomethingCallback() {
 	dom.AddEventListener("doSomethingButton", "click", func() {
-		booCounter++
-		p := dom.CreateParagraphWithText(fmt.Sprintf("Boo! (%d)", booCounter))
-		dom.AddToElement(applicationElement, p)
+		if isReady {
+			booCounter++
+			p := dom.CreateParagraphWithText(fmt.Sprintf("Boo! (%d)", booCounter))
+			dom.AddToElement(applicationElement, p)
+		}
 	})
 }
