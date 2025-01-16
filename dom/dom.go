@@ -20,6 +20,8 @@ func init() {
 }
 
 // ----------------------------------------------------------------------------
+//
+// Adds the specified element directly to the document body.
 func AddToBody(element js.Value) {
 	AddToElement(body, element)
 }
