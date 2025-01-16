@@ -9,7 +9,7 @@
     <h1 id="title">Dommie - The Demo</h1>
     <div id="loading">Loading ...</div>
     <div id="controls">
-      <button id="refreshButton" type="button">Refresh Screen</button>
+      <button id="doSomethingButton" type="button">Do Something</button>
       <br />
       <br />
     </div>
@@ -43,9 +43,7 @@
       go.importObject.env = {
         bootstrap: function () {
           document.getElementById("title").innerHTML = getVersion();
-        },
-        justACallback: function () {
-          updateFunction();
+          setApplicationContainer("application");
         },
       };
 
