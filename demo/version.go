@@ -1,9 +1,13 @@
 package main
 
-import "syscall/js"
+import (
+	"syscall/js"
+
+	"github.com/ewaldhorn/dommie/dom"
+)
 
 // ----------------------------------------------------------------------------
-const VERSION = "0.0.1b"
+const VERSION = "0.0.1c"
 const NAME = "Dommie Demo"
 
 // ----------------------------------------------------------------------------
@@ -17,3 +21,18 @@ func setVersionCallback() {
 		return getVersionString()
 	}))
 }
+
+// ----------------------------------------------------------------------------
+func createToggleVersionButton() {
+	if isReady {
+		controls := dom.GetElementById("controls")
+		button := dom.CreateButton("Toggle Version")
+		dom.AddElementTo(controls, button)
+	}
+}
+
+// ----------------------------------------------------------------------------
+func showVersion() {}
+
+// ----------------------------------------------------------------------------
+func hideVersion() {}

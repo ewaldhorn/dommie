@@ -10,11 +10,14 @@ import (
 // ----------------------------------------------------------------------------
 var document js.Value
 var body js.Value
+var head js.Value
 var console js.Value
+var dommieStyleSheet js.Value
 
 // ----------------------------------------------------------------------------
 func init() {
 	document = js.Global().Get("document")
+	head = js.Global().Get("head")
 	body = document.Get("body")
 	console = js.Global().Get("console")
 }
@@ -23,7 +26,7 @@ func init() {
 //
 // Adds the specified element directly to the document body.
 func AddToBody(element js.Value) {
-	AddToElement(body, element)
+	AddElementTo(body, element)
 }
 
 // ----------------------------------------------------------------------------

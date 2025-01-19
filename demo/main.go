@@ -22,6 +22,8 @@ func main() {
 	setCallbacks()
 	toggleElements()
 	bootstrap()
+	injectBodyCSS()
+	createVersionElements()
 
 	// prevent the app for closing - it stays running for the life of the webpage
 	ch := make(chan struct{})
@@ -37,8 +39,9 @@ func toggleElements() {
 
 // ----------------------------------------------------------------------------
 func setCallbacks() {
-	setVersionCallback()
 	setApplicationContainerCallback()
+	setVersionCallback()
+	setToggleVersionCallback()
 	setDoSomethingCallback()
 }
 
@@ -58,12 +61,46 @@ func setApplicationContainerCallback() {
 }
 
 // ----------------------------------------------------------------------------
+// Now that the page has loaded, inject some CSS styles to the body from the
+// wasm side.
+func injectBodyCSS() {
+	dom.CreateNewStyleElement("body")
+}
+
+// ----------------------------------------------------------------------------
+func createVersionDivAndContent() {
+
+}
+
+// ----------------------------------------------------------------------------
+func createVersionElements() {
+	createToggleVersionButton()
+	createVersionDivAndContent()
+}
+
+// ----------------------------------------------------------------------------
+func setToggleVersionCallback() {
+	js.Global().Set("toggleDisplayVersion", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		if isReady {
+			toggleOn := args[0].Bool()
+			if toggleOn {
+				showVersion()
+			} else {
+				hideVersion()
+			}
+		}
+
+		return nil
+	}))
+}
+
+// ----------------------------------------------------------------------------
 func setDoSomethingCallback() {
 	dom.AddEventListener("doSomethingButton", "click", func() {
 		if isReady {
 			booCounter++
 			p := dom.CreateParagraphWithText(fmt.Sprintf("Boo! (%d)", booCounter))
-			dom.AddToElement(applicationElement, p)
+			dom.AddElementTo(applicationElement, p)
 		}
 	})
 }

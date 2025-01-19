@@ -31,3 +31,13 @@ func CreateParagraphWithText(text string) js.Value {
 	p.Set("innerText", text)
 	return p
 }
+
+// ----------------------------------------------------------------------------
+//
+// Creates a "button" element
+func CreateButton(text string) js.Value {
+	button := createElement("button")
+	button.Set("type", "button")
+	button.Set("innerText", text)
+	return button
+}

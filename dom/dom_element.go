@@ -5,7 +5,7 @@ import "syscall/js"
 // ----------------------------------------------------------------------------
 //
 // Adds the specified element to the target element
-func AddToElement(target, elem js.Value) {
+func AddElementTo(target, elem js.Value) {
 	target.Call("appendChild", elem)
 }
 
