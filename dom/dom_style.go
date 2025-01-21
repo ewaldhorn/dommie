@@ -11,7 +11,7 @@ func isDommieStylesheetAvailable() bool {
 
 	if dommieStyleSheet.IsNull() {
 		// not available yet, create it
-		dommieStyleSheet = createElement("style")
+		dommieStyleSheet = CreateElement("style")
 		dommieStyleSheet.Set("type", "text/css")
 
 		AddElementTo(head, dommieStyleSheet)

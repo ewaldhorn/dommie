@@ -5,7 +5,7 @@ import "syscall/js"
 // ----------------------------------------------------------------------------
 //
 // Creates the specified element type
-func createElement(element string) js.Value {
+func CreateElement(element string) js.Value {
 	return document.Call("createElement", element)
 }
 
@@ -13,14 +13,14 @@ func createElement(element string) js.Value {
 //
 // Creates and returns a new "div" element
 func CreateDiv() js.Value {
-	return createElement("div")
+	return CreateElement("div")
 }
 
 // ----------------------------------------------------------------------------
 //
 // Creates and returns a new "p" element
 func CreateParagraph() js.Value {
-	return createElement("p")
+	return CreateElement("p")
 }
 
 // ----------------------------------------------------------------------------
@@ -36,8 +36,15 @@ func CreateParagraphWithText(text string) js.Value {
 //
 // Creates a "button" element
 func CreateButton(text string) js.Value {
-	button := createElement("button")
+	button := CreateElement("button")
 	button.Set("type", "button")
 	button.Set("innerText", text)
 	return button
+}
+
+// ----------------------------------------------------------------------------
+func CreateImg(src string) js.Value {
+	img := CreateElement("img")
+	img.Set("src", src)
+	return img
 }
