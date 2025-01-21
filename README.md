@@ -2,6 +2,8 @@
 A TinyGo DOM library I use for a lot of projects. It's very basic, so probably
 not what you are looking for.
 
+__Caution: This is still very much WIP__
+
 ## Demo
 Yup, there's one at <https://ewaldhorn.github.io/dommie/>
 
