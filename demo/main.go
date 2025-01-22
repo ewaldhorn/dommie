@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"syscall/js"
 
 	"github.com/ewaldhorn/dommie/dom"
@@ -10,7 +11,7 @@ import (
 // ----------------------------------------------------------------------------
 var isReady bool
 var booCounter int
-var applicationElement js.Value
+var applicationElement dom.HTMLElement
 
 // ------------------------------------------ Externally provided by JavaScript
 
@@ -23,7 +24,7 @@ func main() {
 	toggleElements()
 	bootstrap()
 	injectBodyCSS()
-	createVersionElements()
+	// createVersionElements()
 
 	// prevent the app for closing - it stays running for the life of the webpage
 	ch := make(chan struct{})
@@ -41,7 +42,7 @@ func toggleElements() {
 func setCallbacks() {
 	setApplicationContainerCallback()
 	setVersionCallback()
-	setToggleVersionCallback()
+	// setToggleVersionCallback()
 	setDoSomethingCallback()
 }
 
@@ -98,9 +99,26 @@ func setToggleVersionCallback() {
 func setDoSomethingCallback() {
 	dom.AddEventListener("doSomethingButton", "click", func() {
 		if isReady {
-			booCounter++
-			p := dom.CreateParagraphWithText(fmt.Sprintf("Boo! (%d)", booCounter))
-			dom.AddElementTo(applicationElement, p)
+			switch rand.Intn(2) {
+			case 0:
+				addBoo()
+			case 1:
+				addBlock()
+			default:
+			}
 		}
 	})
+}
+
+// ----------------------------------------------------------------------------
+func addBlock() {
+	dom.AddElementTo(applicationElement,
+		dom.WrapElementWithNewDiv(dom.CreateParagraphWithText("This is some text"), "blue xlarge"))
+}
+
+// ----------------------------------------------------------------------------
+func addBoo() {
+	booCounter++
+	p := dom.CreateParagraphWithText(fmt.Sprintf("Boo! (%d)", booCounter))
+	dom.AddElementTo(applicationElement, p)
 }

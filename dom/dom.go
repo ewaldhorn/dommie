@@ -8,9 +8,9 @@ import (
 )
 
 // ----------------------------------------------------------------------------
-var document js.Value
-var body js.Value
-var head js.Value
+var document HTMLElement
+var body HTMLElement
+var head HTMLElement
 var console js.Value
 var dommieStyleSheet js.Value
 
@@ -25,7 +25,7 @@ func init() {
 // ----------------------------------------------------------------------------
 //
 // Adds the specified element directly to the document body.
-func AddToBody(element js.Value) {
+func AddToBody(element HTMLElement) {
 	AddElementTo(body, element)
 }
 

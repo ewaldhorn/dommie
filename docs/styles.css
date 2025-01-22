@@ -33,3 +33,19 @@ canvas {
   align-items: center;
   align-content: space-evenly;
 }
+
+.blue {
+  color: blue;
+}
+
+.large {
+  font-size: large;
+}
+
+.larger {
+  font-size: larger;
+}
+
+.xlarge {
+  font-size: x-large;
+}

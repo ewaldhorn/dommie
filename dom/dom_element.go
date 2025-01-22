@@ -3,23 +3,26 @@ package dom
 import "syscall/js"
 
 // ----------------------------------------------------------------------------
+type HTMLElement = js.Value
+
+// ----------------------------------------------------------------------------
 //
 // Adds the specified element to the target element
-func AddElementTo(target, elem js.Value) {
+func AddElementTo(target, elem HTMLElement) {
 	target.Call("appendChild", elem)
 }
 
 // ----------------------------------------------------------------------------
 //
 // Attempt to find an element with the given Id
-func GetElementById(elem string) js.Value {
+func GetElementById(elem string) HTMLElement {
 	return document.Call("getElementById", elem)
 }
 
 // ----------------------------------------------------------------------------
 //
 // Gets the specified value from the target element
-func GetElementValue(elem string, value string) js.Value {
+func GetElementValue(elem string, value string) HTMLElement {
 	return GetElementById(elem).Get(value)
 }
 
