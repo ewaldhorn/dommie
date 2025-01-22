@@ -8,6 +8,8 @@ import (
 )
 
 // ----------------------------------------------------------------------------
+// Globals used by Dommie to speed things up a bit by not having to get
+// references over and over.
 var document HTMLElement
 var body HTMLElement
 var head HTMLElement
@@ -15,6 +17,7 @@ var console js.Value
 var dommieStyleSheet js.Value
 
 // ----------------------------------------------------------------------------
+// Set up references to some basics Dommie uses a lot.
 func init() {
 	document = js.Global().Get("document")
 	head = js.Global().Get("head")
@@ -27,11 +30,4 @@ func init() {
 // Adds the specified element directly to the document body.
 func AddToBody(element HTMLElement) {
 	AddElementTo(body, element)
-}
-
-// ----------------------------------------------------------------------------
-//
-// Log calls JavaScript console.log in the browser.
-func Log(message string) {
-	console.Call("log", message)
 }

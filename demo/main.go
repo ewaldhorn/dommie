@@ -20,6 +20,7 @@ func bootstrap()
 
 // ----------------------------------------------------------------------------
 func main() {
+	dom.Log("Ok.", "Dommie is starting.", "Here we go!")
 	setCallbacks()
 	toggleElements()
 	bootstrap()
