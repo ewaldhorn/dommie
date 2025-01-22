@@ -1,5 +1,7 @@
 package dom
 
+import "strings"
+
 // ----------------------------------------------------------------------------
 //
 // Checks whether the Dommie stylesheet exists yet or not. If not, it is created
@@ -25,6 +27,15 @@ func isDommieStylesheetAvailable() bool {
 // Adds a CSS class to the specified element
 func AddClass(elem string, class string) {
 	GetElementValue(elem, "classList").Call("add", class)
+}
+
+// ----------------------------------------------------------------------------
+//
+// Replaces all the classes for the element with the provided list
+func ReplaceClasses(element HTMLElement, classes ...string) HTMLElement {
+	element.Set("className", strings.Join(classes, " "))
+
+	return element
 }
 
 // ----------------------------------------------------------------------------
