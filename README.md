@@ -8,7 +8,16 @@ __Caution: This is still very much WIP__
 Yup, there's one at <https://ewaldhorn.github.io/dommie/>
 
 ## Why though
-I don't know, really. This started as a quick helper and now it's a thing. Sorry.
+As a contractor, I do a lot of different things for clients. Of late, I've been
+building a lot of dashboards and data visualisations etc. The web is just a great
+fit for much of this, but I also enjoy using Go. So Dommie helps me target the
+web, but also use mostly the same language I use to work on the API and server side
+of things.
+
+Less context-switching for me means I feel more productive. Whether that's really
+the case or not is irrelevant to me, I love what I'm doing and this is fun. It's
+a big win that clients are happy with what I deliver though!
+
 
 ## How
 This uses [TinyGo](https://tinygo.org/) to build small wasm objects that you can
