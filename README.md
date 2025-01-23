@@ -1,4 +1,4 @@
-# Dommie v0.0.1d
+# Dommie v0.0.2
 A TinyGo DOM library I use for a lot of projects. It's very basic, so probably
 not what you are looking for.
 
