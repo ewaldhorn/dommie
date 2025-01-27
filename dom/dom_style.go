@@ -51,8 +51,12 @@ func RemoveClass(elem string, class string) {
 // ----------------------------------------------------------------------------
 //
 // Creates a new style element for the page
-func CreateNewStyleElement(identifier string) {
-	if !head.IsNull() && isDommieStylesheetAvailable() {
+func AddNewStyleElement(style string) {
+	if !head.IsNull() {
+		tmpStyleSheet := CreateElement("style")
+		tmpStyleSheet.Set("type", "text/css")
+		tmpStyleSheet.Set("innerHTML", style)
 
+		AddElementTo(head, tmpStyleSheet)
 	}
 }

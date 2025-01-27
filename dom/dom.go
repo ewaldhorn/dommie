@@ -20,7 +20,7 @@ var dommieStyleSheet js.Value
 // Set up references to some basics Dommie uses a lot.
 func init() {
 	document = js.Global().Get("document")
-	head = js.Global().Get("head")
+	head = document.Get("head")
 	body = document.Get("body")
 	console = js.Global().Get("console")
 }

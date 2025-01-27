@@ -1,3 +1,3 @@
 module github.com/ewaldhorn/dommie
 
-go 1.23.4
+go 1.23.5

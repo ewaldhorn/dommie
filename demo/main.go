@@ -66,7 +66,7 @@ func setApplicationContainerCallback() {
 // Now that the page has loaded, inject some CSS styles to the body from the
 // wasm side.
 func injectBodyCSS() {
-	dom.CreateNewStyleElement("body")
+	dom.AddNewStyleElement(bodyStyleFile)
 }
 
 // ----------------------------------------------------------------------------
