@@ -38,6 +38,14 @@ canvas {
   color: blue;
 }
 
+.red {
+  color: red;
+}
+
+.orange {
+  color: orange;
+}
+
 .large {
   font-size: large;
 }

@@ -114,7 +114,7 @@ func setDoSomethingCallback() {
 // ----------------------------------------------------------------------------
 func addBlock() {
 	dom.AddElementTo(applicationElement,
-		dom.WrapElementWithNewDiv(dom.CreateParagraphWithText("This is some text"), "blue xlarge"))
+		dom.WrapElementWithNewDiv(dom.CreateParagraphWithText("This is some text"), fmt.Sprintf("%s %s", randomColour(), randomSize())))
 }
 
 // ----------------------------------------------------------------------------
