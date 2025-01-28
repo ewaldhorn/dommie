@@ -44,7 +44,7 @@ func setCallbacks() {
 	setApplicationContainerCallback()
 	setVersionCallback()
 	// setToggleVersionCallback()
-	setDoSomethingCallback()
+	setAddRandomElementCallback()
 }
 
 // ----------------------------------------------------------------------------
@@ -64,7 +64,7 @@ func setApplicationContainerCallback() {
 
 // ----------------------------------------------------------------------------
 // Now that the page has loaded, inject some CSS styles to the body from the
-// wasm side.
+// wasm side. The handy Go embed feature makes this a breeze.
 func injectBodyCSS() {
 	dom.AddNewStyleElement(bodyStyleFile)
 }
@@ -97,14 +97,14 @@ func setToggleVersionCallback() {
 }
 
 // ----------------------------------------------------------------------------
-func setDoSomethingCallback() {
-	dom.AddEventListener("doSomethingButton", "click", func() {
+func setAddRandomElementCallback() {
+	dom.AddEventListener("addSomethingButton", "click", func() {
 		if isReady {
 			switch rand.Intn(2) {
 			case 0:
 				addBoo()
 			case 1:
-				addBlock()
+				addRandomParagraph()
 			default:
 			}
 		}
@@ -112,7 +112,7 @@ func setDoSomethingCallback() {
 }
 
 // ----------------------------------------------------------------------------
-func addBlock() {
+func addRandomParagraph() {
 	dom.AddElementTo(applicationElement,
 		dom.WrapElementWithNewDiv(dom.CreateParagraphWithText("This is some text"), fmt.Sprintf("%s %s", randomColour(), randomSize())))
 }
