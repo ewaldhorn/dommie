@@ -12,6 +12,8 @@ import (
 var isReady bool
 var booCounter int
 var applicationElement dom.HTMLElement
+var articleElement dom.HTMLElement
+var asideElement dom.HTMLElement
 
 // ------------------------------------------ Externally provided by JavaScript
 
@@ -25,6 +27,8 @@ func main() {
 	toggleElements()
 	bootstrap()
 	injectBodyCSS()
+	createAppElements()
+	populateArticleElement()
 	// createVersionElements()
 
 	// prevent the app for closing - it stays running for the life of the webpage
@@ -67,6 +71,21 @@ func setApplicationContainerCallback() {
 // wasm side. The handy Go embed feature makes this a breeze.
 func injectBodyCSS() {
 	dom.AddNewStyleElement(bodyStyleFile)
+}
+
+// ----------------------------------------------------------------------------
+func createAppElements() {
+	articleElement = dom.CreateElement("article")
+	asideElement = dom.CreateElement("aside")
+
+	dom.AddElementTo(applicationElement, articleElement)
+	dom.AddElementTo(applicationElement, asideElement)
+}
+
+// ----------------------------------------------------------------------------
+func populateArticleElement() {
+	newParagraph := dom.CreateParagraphWithText(dommieTextFile)
+	dom.AddElementTo(articleElement, newParagraph)
 }
 
 // ----------------------------------------------------------------------------
@@ -113,7 +132,7 @@ func setAddRandomElementCallback() {
 
 // ----------------------------------------------------------------------------
 func addRandomParagraph() {
-	dom.AddElementTo(applicationElement,
+	dom.AddElementTo(asideElement,
 		dom.WrapElementWithNewDiv(dom.CreateParagraphWithText("This is some text"), fmt.Sprintf("%s %s", randomColour(), randomSize())))
 }
 
@@ -121,5 +140,5 @@ func addRandomParagraph() {
 func addBoo() {
 	booCounter++
 	p := dom.CreateParagraphWithText(fmt.Sprintf("Boo! (%d)", booCounter))
-	dom.AddElementTo(applicationElement, p)
+	dom.AddElementTo(asideElement, p)
 }

@@ -1,0 +1,2 @@
+Dommie is a TinyGo compiled Go web assembly library to manipulate the HTML DOM
+from wasm. This makes it easier to build web applications using Go.

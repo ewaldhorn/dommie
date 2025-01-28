@@ -9,3 +9,25 @@ body h1 {
 #information {
   color: #838383;
 }
+
+#application {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 700px) {
+  #application {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+#application article {
+  flex-grow: 5;
+  border: 1px solid #444444;
+}
+
+#application aside {
+  border: 1px solid #838383;
+  flex-grow: 2;
+}
