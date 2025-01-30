@@ -14,6 +14,13 @@ func AddElementTo(target, elem HTMLElement) {
 
 // ----------------------------------------------------------------------------
 //
+// Removes all the child elements from this element
+func RemoveAllChildElementsFrom(target HTMLElement) {
+	target.Call("replaceChildren")
+}
+
+// ----------------------------------------------------------------------------
+//
 // Attempt to find an element with the given Id
 func GetElementById(elem string) HTMLElement {
 	return document.Call("getElementById", elem)

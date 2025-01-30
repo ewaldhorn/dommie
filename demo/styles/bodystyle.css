@@ -10,24 +10,24 @@ body h1 {
   color: #838383;
 }
 
-#application {
+.application {
   display: flex;
   flex-direction: row;
 }
 
 @media (max-width: 700px) {
-  #application {
+  .application {
     display: flex;
     flex-direction: column;
   }
 }
 
-#application article {
+.application article {
   flex-grow: 5;
   border: 1px solid #444444;
 }
 
-#application aside {
+.application aside {
   border: 1px solid #838383;
   flex-grow: 2;
 }

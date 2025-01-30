@@ -49,6 +49,7 @@ func setCallbacks() {
 	setVersionCallback()
 	// setToggleVersionCallback()
 	setAddRandomElementCallback()
+	setClearAsideButtonCallback()
 }
 
 // ----------------------------------------------------------------------------
@@ -126,6 +127,15 @@ func setAddRandomElementCallback() {
 				addRandomParagraph()
 			default:
 			}
+		}
+	})
+}
+
+// ----------------------------------------------------------------------------
+func setClearAsideButtonCallback() {
+	dom.AddEventListener("clearAsideButton", "click", func() {
+		if isReady {
+			dom.RemoveAllChildElementsFrom(asideElement)
 		}
 	})
 }

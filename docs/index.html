@@ -12,12 +12,13 @@
     <nav>
       <div id="controls">
         <button id="addSomethingButton" type="button">Add Something</button>
+        <button id="clearAsideButton" type="button">Clear Aside</button>
       </div>
     </nav>
     <hr />
     <section>
       <div id="loading">Loading ...</div>
-      <div id="application"></div>
+      <div id="application" class="application"></div>
     </section>
     <hr />
     <footer id="information">
@@ -39,11 +40,6 @@
       const WASM_URL = "dommie.wasm";
 
       let wasm;
-
-      let updateFunction = () => {
-        // refreshCanvasTwo();
-        // requestAnimationFrame(updateFunction);
-      };
 
       // ----------------------------------------------------------------------
       go.importObject.env = {
